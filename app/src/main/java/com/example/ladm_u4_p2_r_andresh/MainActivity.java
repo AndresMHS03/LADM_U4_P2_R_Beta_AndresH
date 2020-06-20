@@ -108,8 +108,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String string = String.valueOf(mensaje.getText());
-
                 sendReceive.write(string.getBytes());
+                msg_box.setText(msg_box.getText()+string+"\n");
+                mensaje.setText("");
             }
         });
     }
@@ -133,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 case STATE_MESSAGE_RECEIVED:
                    byte[] readBuff = (byte[]) msg.obj;
                    String tempMsg=new String(readBuff,0,msg.arg1);
-                   msg_box.setText(tempMsg);
+                   msg_box.setText(msg_box.getText()+tempMsg+"\n");
                    break;
             }
 
